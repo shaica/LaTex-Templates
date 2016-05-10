@@ -1,0 +1,413 @@
+\documentclass{article}
+
+% Bu şablon 2015 güz döneminde açılmış olan yüksek lisans seminer dersi ödev raporunun hazırlanmasına yardımcı olmak amacıyla Şahika Koyun tarafından hazırlanmıştır.
+
+\usepackage{xcolor} %This package is required to use colors in the document.
+\usepackage{tikz,pgf} %These packages are required for drawings.
+\usepackage{amsmath, amssymb, mathtools} %This package is required for mathematical environments.
+\usepackage[turkish]{babel} %Türkçe bölüm isimleri
+\usepackage[utf8]{inputenc} %Türkçe karakterler
+\usepackage[T1]{fontenc} %Türkçe heceleme
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\begin{document}
+\title{Seminer Ödev Şablonu}
+\date{2014-2015 Güz}
+\author{Şahika Koyun \\ \small{skoyun@yildiz.edu.tr}}
+\maketitle
+
+\begin{abstract}
+Bu ödev şablonu, Vildan Çetinsaya Özkır tarafından 2014-2015 Güz Döneminde verilen Yüksek Lisans Seminer dersi için hazırlanmıştır. Ödev raporunuz makale formatında hazırlanmalı ve 4-6 sayfa arasında olmalıdır. Ödev raporunuz {\LaTeX} ortamında hazırlanmalıdır. Bu şablonda örnek ödev konusu olarak ``{\LaTeX} ortamında belge hazırlamak'' konusu ele alınmaktadır. Ödev raporunuzu hazırlarken ihtiyacınız olacak temel özelliklerin kullanımı gösterilmektedir.
+\end{abstract}
+
+\section{Problem Tanımı}
+% Bu bölümde ödev konunuzu oluşturan problem en temel formunda tanımlanmalıdır. Problemin sözel tanımı yapıldıktan sonra matetiksel modeli tanıtılmalıdır.
+
+{\TeX} Donald Knuth tarafından geliştirilen bir alt düzey biçimleme dilidir. Metni okunaklı ve tutarlı olarak biçimlendirir. {\LaTeX} ise {\TeX} dilinin kullanımını kolaylaştıran bir makrolar paketidir ve özellikle matematiksel gösterim içeren belgelerin hazırlanmasını kolaylaştırır. {\LaTeX} ile hazırlanan belgeler \textbf{*.tex} (tex dosyası) olarak oluşturulur. Tex dosyası oluşturacağınız belgenin ana dosyasıdır; yazacaklarınız, resimleriniz, tablolarınız veya matematiksel gösterimlerinizin hepsi bu dosyada oluşturulur.
+
+Bir tex dosyasının iki parçası bulunur: \textbf{başlangıç (preamble)} ve \textbf{belge (document)}. \textbf{Başlangıç} kısmında belgede kullanılacak olan paket ve özellikler tanımlanır. Font boyutu, belgenin tipi, kullanılacak kağıt boyutu, belgenin dili gibi özelliklerin hepsi burada tanımlanır. Tablo~\ref{tab: preamble}'de en çok kullanılan özellikler özetlenmektedir.\footnote{Daha ayrıntılı bilgi için: \url{<http://en.wikibooks.org/wiki/LaTeX/Document_Structure>}}
+
+\begin{table}[h]
+\begin{center}
+\caption{Belge özellikleri\label{tab: preamble}}
+\begin{tabular}{| c | p{7cm} |}
+\hline
+\textbf{Belge Tipi} & \\ \hline
+article & Bilimsel makaleler, sunumlar, kısa raporlar, davetler ... \\ \hline
+report & Birden fazla bölüm içeren uzun raporlar, kısa kitaplar, tezler \\ \hline
+book & Kitaplar \\ \hline
+beamer & Sunumlar \\ \hline \hline
+\textbf{Belge Tipi Özellikleri} & \\
+\hline
+10pt, 11pt, ... & Font büyüklüğü \\ \hline
+a4paper, letterpaper,... & Kullanılacak kağıt tipi \\ \hline
+twocolumn & Metin iki sütun halinde hazırlanır \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Kullanılacak belge tipi ve özellikleri aşağıdaki gibi tanımlanır:
+
+\begin{verbatim}
+\documentclass[a4paper, twocolumn, 11pt]{article}
+\end{verbatim}
+
+İkinci adım olarak belgede kullanılacak paketler tanımlanır. Tablo~\ref{tab: packages}'de en çok ihtiyaç duyacağınız paketler özetlenmektedir.\footnote{Kullanılabilecek paketlerin tüm listesi için: \url{<http://www.ctan.org/pkg/>}}
+
+\begin{table}[h]
+\begin{center}
+\caption{Paketler\label{tab: packages}}
+\begin{tabular}{| p{4cm} | p{7cm} |}
+\hline
+\textbf{Paketler} & \\ \hline
+amsmath, amssymb, mathtools & Matematiksel gösterimlerin yapılabilmesi için gerekli olan pakettir. \\ \hline
+babel & Belgede kullanılacak başlıkların belge dilinde yazılmasını sağlamak için kullanılan pakettir. \\ \hline
+tikz, pgf & Çeşitli çizimler için kullanılan paketlerdir. \\ \hline
+graphicx & Metne şekil eklenebilmesi için kullanılan pakettir. \\ \hline
+thmtools & Teorem, tanım, kanıt ve benzeri başlıkların kullanılabilmesi için gerekli pakettir. \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Birkaç paket haricinde paketleri ayrıca yüklemeniz gerekmemektedir. Başlangıç kısmında paketler tanımlandıktan sonraki ilk derlemede MikTex paket eğer yüklü değilse otomatik olarak yüklemektedir. Paketler belgeye aşağıdaki şekilde tanıtılır:
+\begin{verbatim}
+\usepacke[options]{package}
+\end{verbatim}
+
+Kareli parantez içine paketle ilgili -varsa- özellikler yazılır. Özellik içermeyen paketler aynı kod içerisinde tanımlanabilir:
+
+\begin{verbatim}
+\usepackage{package-1, package-2, ..., package-n}
+\end{verbatim}
+
+Belge tipi, özellikler belirlenip kullanılacak paketler tanıtıldıktan sonra ana göve olan \textbf{belge} kısmına geçilir. {\LaTeX} kullanılacak her yeni ortamı \textbf{begin} ve \textbf{end} komutlarıyla belirler. \textbf{Belge} kısmı da bu şekilde tanımlanır ve metinle ilgili diğer her şey bu iki komut arasına yerleştirilir. \textbf{end\{document\}} komutundan sonra yazılan hiçbir şey derlemeye katılmaz.
+
+\begin{verbatim}
+\begin{document}
+	...
+\end{document}
+\end{verbatim}
+
+\section{Problem Tipleri}
+%Bu bölümde ödev konunuzu oluşturan problemin alt tiplerini açıklamanız gerekmektedir. 
+
+Bu bölümde sırasıyla aşağıdakiler gösterilecektir:
+\begin{enumerate}
+\item {\TeX} dosyasında açıklama yazmak
+\item Bölüm oluşturma
+\item Şekil ekleme ve biçimlendirme
+\item Metin içi referans verme
+\item Tablo ekleme ve biçimlendirme
+\item Matematiksel alan oluşturma
+\item Kaynakça oluşturulması
+\end{enumerate}
+
+\textbf{Belge} kısmı içerisinde bulunmasına rağmen derleme işlemine katılmayacak açıklamalar yazmak için metnin başına \% işareti eklemek yeterlidir. Yeni satıra başlandığında normal yazıma devam edilmektedir.
+
+\begin{verbatim}
+%Bu bir açıklamadır.
+\end{verbatim}
+
+Belgede kullanılacak olan başlık hiyerarşisi aşağıdaki gibidir:
+\begin{enumerate}
+\item Chapter\footnote{Sadece report ve book belge tiplerinde kullanılabilir.}
+\begin{enumerate}
+\item Section
+\begin{enumerate}
+\item Subsection
+\begin{enumerate}
+\item Subsubsection
+\[\vdots\]
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+
+Özet özel bir başlık olup belgenin dili ne olursa olsun aşağıdaki şekilde tanımlanır:
+
+\begin{verbatim}
+\begin{abstract}
+...
+\end{abstract}
+\end{verbatim}
+
+Şekil ekleme konusunda en önemli nokta eklenmesi istenen şeklin tex dosyasının bulunduğu klasörde bulunması zorunluluğudur. Eğer resim dosyası ile tex dosyası aynı klasörde değilse derleme esnasında resim dosyası bulunamayacağından belgeye eklenemez. {\LaTeX} eklenen resim üzerinde çeşitli düzenlemeler yapmaya olanak sağlamaktadır; burada resim ekleme, resim yazısı ekleme, etiketleme ve boyut değiştirme örnekleri verilecektir. Eklenen resimler daha sonra metin içinde refere edebilmek için etiketlenirler ve bu etiketle çağırılırlar. Yeni resimler eklendiğinde {\LaTeX} resim numaralarını otomatik olarak günceller.\footnote{Kaynakça hariç diğer metin içi referans gösterimi aynı şekilde yapılmaktadır.}
+
+Resmi metin içinde refere etmek için, \textbf{ref} komutu kullanılır. Şekil~\ref{fig: örnek}'te ``Resmin eklenmesi'' kodunun sonucu görülmektedir. \footnote{Metni derlediğinizde referans numaralarının olması gereken yerde soru işareteri belirirse yeniden derlemeyi veya önce BibTex derlemesi yapıp sonra tekrar {\LaTeX} derlemesi yapınız.}
+
+Resmin eklenmesi:
+
+\begin{verbatim}
+\begin{figure}
+\begin{center} %resmin ortalanması için
+\includegraphics{dates.jpg}
+\end{center} %ortala komutunun bitirilmesi
+\caption{Örnek resim\label{fig: örnek}} %resim yazısının ve 
+                                  etiketinin (label) eklenmesi
+\end{figure}
+\end{verbatim}
+
+Resmin refere edilmesi kodu:
+\begin{verbatim}
+Şekil~\ref{fig: örnek} %etiket istenilen şekilde oluşturulabilir 
+            ancak kullanım kolaylığı açısından etiketleme yapılırken 
+             etiketin tipine göre özel bir etiketleme yapılabilir.
+\end{verbatim}
+
+Sonuç:
+\begin{figure}[!h]
+\begin{center} 
+\includegraphics{dates.jpg}
+\end{center} 
+\caption{Örnek resim\label{fig: ornek}} 
+\end{figure}
+
+Bu şekli metin içinde daha kabul edilebilir bir boyuta getirmek için kodda aşağıdaki değişiklik yapılır:
+
+\begin{verbatim}
+\begin{figure}
+\shorthandoff{=} %Türkçe babel paketinde = işareti başka amaçla kullanıldığından hatanın önüne geçilmesi için yapılan bir düzenleme. İngilizce hazırlanan belgelerde bu kısmı eklemeye gerek yoktur.
+\begin{center} %resmin ortalanması için
+\includegraphics[width=0.7\textwidth]{dates.jpg} %yazı genişliğinin \%70'i olarak boyutlandırma
+\end{center} %ortala komutunun bitirilmesi
+\shorthandon{=} 
+\caption{Örnek resim\label{fig: örnek}} %resim yazısının ve etiketinin (label) eklenmesi
+\end{figure}
+\end{verbatim}
+
+Sonuç:
+
+\begin{figure}[!h]
+\begin{center}
+\shorthandoff{=}
+\includegraphics[width=2.5cm]{dates.jpg}
+\end{center}
+\shorthandon{=}
+\caption{Boyutlandırılmış örnek\label{fig: ornek2}}
+\end{figure}
+
+Tablo oluştumak şekil eklemekten daha zor gözükse de tablonun asıl şekli oluşturulduktan sonra veriyi eklemek için daha pratik çözümler oluşturabilirsiniz. Tablo oluştururken önemli noktalar; tablonun boyutunun ayarlanması, \textbf{textwrapping} özelliğinin kullanılması, yazıların şekillendirilmesi olarak sıralanabilir. Burada tek bir sayfada gözükecek, temel bir tablonun nasıl oluşturulacağı gösterilecektir.\footnote{Tablo oluşturmayla daha fazla bilgi için:\url{<http://en.wikibooks.org/wiki/LaTeX/Tables>}}
+
+Tablolar içiçe geçmiş iki ortamdan oluşur: \textbf{table} ve \textbf{tabular}. Basit bir tablo oluşturmak için belgeye yeni paketler tanıtılması gerekmez; ancak birkaç sayfaya bölünmüş tablolar gibi özellikli tabloların oluşturulması için yeni paketlerin tanıtılması gerekmektedir.
+
+Tablo~\ref{tab: tablo özellikleri}'de tablo içindeki yazıların hizalanmasıyla ilgili bilgiler özetlenmektedir. Tablo~\ref{tab: tablo özellikleri}'in kodu aşağıdaki gibidir:
+
+\begin{verbatim}
+\begin{table}
+\caption{Tablo veri hizalama\label{tab: tablo özellikleri}}
+\begin{center} %tabloyu ortalamak için
+\begin{tabular}{| c | p{6cm} |} % tablo sütunlarının özellikleri
+\hline %tablonun üst çizgisi
+\textbf{Yatay hizalama} & \textbf{Açıklama} \\ %satır başlığı
+\hline 
+c & Ortalanmış hizalama \\
+\hline
+l & Sola yaslanmış hizalama \\
+\hline
+r & sağa yaslanmış hizalama \\
+\hline
+p & İki yana yaslanmış hizalama. Bu hizalama tipinin yanına boyutu
+ yazılarak aynı hücre içinde alt satıra devam edilmesi sağlanır.
+ (textwrapping) \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+\end{verbatim}
+
+\begin{table}[!h]
+\caption{Tablo veri hizalama\label{tab: tablo özellikleri}}
+\begin{center}
+\begin{tabular}{| c | p{6cm} |} 
+\hline 
+\textbf{Yatay hizalama} & \textbf{Açıklama} \\ 
+\hline 
+c & Ortalanmış hizalama \\
+\hline
+l & Sola yaslanmış hizalama \\
+\hline
+r & sağa yaslanmış hizalama \\
+\hline
+p & İki yana yaslanmış hizalama. Bu hizalama tipinin yanına boyutu yazılarak aynı hücre içinde alt satıra devam edilmesi sağlanır. (textwrapping) \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Matematiksel alanların eklenmesinin temel olarak iki tipi vardır: satır içinde yazılan matematiksel gösterimler ve kendi satırına sahip matematiksel gösterimler. Kendi satırına sahip matematiksel alanlar ise numaralandırılmış ve numaralandırılmamış olarak hazırlanabilir. Numaralandırılmış alanlar denklem gibi metin içinde refere edilmesi gereken (Denklem~\ref{denk: örnek} gibi) matematiksel gösterimler için kullanılabilir. Kendi satırına sahip olmasına rağmen numaralandırılmamış matematiksel alanlar \verb|\[ ... \]| ile oluşturulur. Satır dahilinde yazılması istenen matematiksel gösterimler ise \verb|\( ... \) |ile oluşturulur. Örneğin Denklem~\ref{denk: örnek} satır içinde gösterilmek istenseydi: \(f(x) = x^3+x^2+x+c \quad \forall x \in \mathnormal{R} \quad c\in\mathnormal{Z^+} \). \footnote{Matematiksel alanlarla ilgili daha fazla bilgi için:\url{<http://en.wikibooks.org/wiki/LaTeX/Mathematics>}}
+
+\begin{equation}
+\label{denk: örnek}
+f(x) = x^3+x^2+x+c \quad \forall x \in \mathnormal{R} \quad c\in\mathnormal{Z^+}
+\end{equation}
+
+\[
+f(x) = x^3+x^2+x+c \quad \forall x \in \mathnormal{R} \quad c\in\mathnormal{Z^+} 
+\]
+
+Denklem~\ref{denk: örnek}'in kodu:
+\begin{verbatim}
+\begin{equation} %denklem ortamı
+\label{denk: örnek} %denklem etiketi
+f(x) = x^3+x^2+x+c \quad \forall x \in \mathnormal{R}
+ \quad c\in\mathnormal{Z^+} %denklem
+\end{equation}
+\end{verbatim}
+
+Denklem~\ref{denk: örnek} numarasız yazım kodu:
+\begin{verbatim}
+\[
+f(x) = x^3+x^2+x+c \quad \forall x \in \mathnormal{R}
+ \quad c\in\mathnormal{Z^+} %denklem
+\]
+\end{verbatim}
+
+Denklem~\ref{denk: örnek} satır içi yazım kodu:
+\begin{verbatim}
+\(
+f(x) = x^3+x^2+x+c \quad \forall x \in \mathnormal{R}
+ \quad c\in\mathnormal{Z^+} %denklem
+\)
+\end{verbatim}
+
+Son olarak belgenin oluşturulma sürecinde kullanılan kaynakların listesini oluşturmak kalmaktadır. Kaynakça'nın oluşturulmasında da iki yöntem vardır:
+\begin{enumerate}
+\item Her kaynağın tek tek belgeye girilmesi
+\item BibTeX ile oluştuturulmuş bir kaynakça dosyasının belgeye tanıtılması
+\end{enumerate}
+
+Kaynakçayı oluşturmak için kullanılan ortam \textbf{bibliography} ortamıdır:
+
+\begin{verbatim}
+\begin{bibliography}
+...
+\end{bibliography}
+\end{verbatim}
+
+Kaynakçayı oluşturmak için seçilen yöntem hangisi olursa olsun kaynakçayla ilgili tüm bilgiler bu ortamın içinde yazılmalıdır. BibTeX ile kaynakça dosyası oluşturmak hem daha kolaydır hem de aynı dosyanın farklı belgelerde kullanılması çok kolaydır. Bütün çalışmalarınız için tek bir BibTeX dosyası oluşturabileceğiniz gibi herbir çalışma için ayrı ayrı dosyalar da oluşturabilirsiniz. BibTeX dosyasını bir belgeye tanıttığınızda sadece kullandığınız alıntılara göre kaynakça oluşturulacaktır (aksini belirtmediğiniz takdirde!). Bu tarz kaynakça dosyalarının oluşturulmasında kullanılabilecek birçok ücretsiz program da bulunmaktadır. Arayüze sahip bu programlarla kaynak bilgisini oluşturmak, bu kaynakları metin içinde tek tek tanımlamaktan daha kolaydır.\footnote{Kaynakça oluşturmakla ilgili daha fazla bilgi için:\url{<http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management>}}
+
+Metin içinde kaynak bilgisi oluşturup bu kaynağı alıntılama kodu aşağıdaki gibidir:
+
+\begin{verbatim}
+@article{Xarticle, %makale tipi kaynak, Xarticle alıntı yapılacağı 
+    author    = "",     %zaman kullanılacak olan BibTeX anahtarıdır
+    title     = "",
+    journal   = "",
+    %volume   = "", 
+    %number   = "",
+    %pages    = "",
+    year      = "XXXX",
+    %month    = "",
+    %note     = "",
+}
+\end{verbatim}
+
+Bu kaynak metin içinde alıntılanmak istendiği zaman, alıntı yapılması istenen noktaya \verb|~\cite{citekey}| kodu eklenir. Aynı anda birden fazla kaynak alıntılanmak istendiğinde aynı \textbf{cite} kodunun içine birden fazla \textbf{citekey} yazılabilir: \verb|~\cite{citekey-1,citekey-2, ... , citekey-n}|. Alıntının metin içinde ve kaynakça listesinde nasıl gözükmesinin istendiği kaynakça tipleriyle tanımlanır. Tablo~\ref{tab: bib style}
+
+\begin{table}
+\begin{center}
+\caption{Kaynakça tipleri\label{tab: bib style}}
+\begin{tabular}{| p{2.5cm} | p{3cm} | p{2.5cm} | p{2cm} | }
+\hline
+\textbf{Kaynakça tipi} & \textbf{Yazar adı görünümü} & \textbf{Referans Formatı} & \textbf{Sıralama} \\
+\hline \hline
+plain	& Homer Jay Simpson&	\#ID\# &	by author \\ \hline
+unsrt & Homer Jay Simpson&	\#ID\# &	as referenced \\ \hline
+abbrv & H. J. Simpson&	\#ID\#	&by author \\ \hline
+alpha & Homer Jay Simpson&	Sim95&	by author \\ \hline
+abstract &	Homer Jay Simpson&	Simpson-1995a	& \\ \hline
+acm	& Simpson, H. J.&	\#ID\#	& \\ \hline
+authordate1 &	Simpson, Homer Jay&	Simpson, 1995	& \\ \hline
+apa	&Simpson, H. J. (1995)	&Simpson1995	& \\ \hline
+named&	Homer Jay Simpson	&Simpson 1995	& \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Bir kaynakça dosyası belgeye aşağıdaki şekilde eklenir (bibliography ortamının kullanılması gerekmez):
+
+\begin{verbatim}
+\bibliography{bibfile}{}
+\bibliographysylte{style}
+\end{verbatim}
+
+\section{Literatür Özeti}
+%Bu bölümde ödev konunuzla ilgili bir literatür araştırması yapmanız gerekmektedir. Konunuzla ilgili yayınlanmış en güncel 20 makaleyi tablo olarak listelemeniz gerekmektedir. Tabloda makalenin adı, yazarı, yayın yılı verilmeli ve konusu özetlenmelidir. Makalenin konusunu birkaç cümleyle özetlemeniz yeterlidir. 
+
+{\LaTeX}'le belge hazırlamak istediğinizde internette sonu gelmeyen kaynaklar bulabilirsiniz. Ayrıca kullanacağınız paketlerin çoğunlukla belgelendirilmesi çok iyi yapılmıştır ve bu belgelerden faydalanmanızı tavsiye ederim. Bunun haricinde oldukça kapsamlı birçok forum sitesi de karşılaştığınız problemleri çözmenizde yardımcı olacak bilgiler içermektedir. En önemlisi bu bilgilerin hepsine ücretsiz olarak ulaşabiliyor olmamız! Tablo~\ref{tab: lit} faydalanabileceğiniz belli başlı kaynakları içermektedir; bunlar yeterli gelmediği zaman da Google'da yapacağınız hızlı bir arama sizi çözüme götürecektir. Son olarak çoğu dergi kendi {\LaTeX} şablonunu kullanmaktadır ve bu şablonlara dergilerin sitesinden erişip kullanabilirsiniz.
+
+\begin{table}[!h]
+\caption{Kaynaklar\label{tab: lit}}
+\begin{center}
+\begin{tabular}{| p{5.5cm} | p{6cm} |}
+\hline
+\textbf{adres} & \textbf{açıklama} \\ \hline \hline
+\url{<http://en.wikibooks.org/wiki/LaTeX>} & Wikibooks tarafından hazırlanmış, kapsamlı ve ayrıntılı bir {\LaTeX} kitabı \\ \hline
+\url{<http://www.ctan.org/>} & {\LaTeX} paket veritabanı \\ \hline
+\url{<http://docs.miktex.org/manual/localadditions.html>} & Özel hazırlanmış dosyaların (bibstyle, documentstyle vs..) bilgisayarın {\TeX} dizinine eklenmesiyle ilgili bir tutorial\\ \hline
+\url{<http://tex.stackexchange.com/>} & Sorularınıza yanıt bulabileceğiniz bir forum. Soru sormaktan çekinmeyin; ancak önce sorunun daha önce sorulmamıl olduğundan emin olun.\\ \hline
+\url{<http://www.latex-community.org/>} & Yine bir forum sitesi \\ \hline
+\url{<http://www.latextemplates.com/>} & Çeşitli {\LaTeX} şablonları bulabileceğiniz bir site.\\ \hline
+\url{<https://www.writelatex.com/>} & Online olarak {\LaTeX} dosyaları oluşturabileceğiniz bir site. Üye olmadan veya olarak kullanabilirsiniz. \\ \hline
+\url{<http://miktex.org/>} & {\LaTeX} kullanmak için ihtiyacınız olan ana paket.\\ \hline
+\url{<http://en.wikibooks.org/wiki/LaTeX/Installation#Editors>} & MikTex'in kendi editörü olan TeXworks'u kullanabileceğiniz gibi başka editörler de kullanabilirsiniz. Bu editörlerin bazıları ücretli bazıları ücretsizdir. Burada ayrıntılı bir listesini bulabilirsiniz.\\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\section{Örnek}
+% Bu bölümde ödev konunuzu oluşturan tem problemle ilgili bir problemi tanımlamanız ve çözümünü göstermeniz gerekmektedir. Burada önemli olan karmaşık veya nadir bir problemi tanımlamak veya çözmek değil, bu tarz problemlerin nasıl çözülebileceğini gösteren temel bilgileri vermenizdir. Unutmayın, sunumunuzda bu kısımdan sorular gelebilir. Bu yüzden problemi ve çözümü iyice anladığınızdan emin olunuz.
+
+Problem tipleri başlığında verilmeyen yazı düzenlemesiyle ilgili örnekler burada kodlarıyla beraber verilmektedir:
+
+Yazının renklendirilmesi
+
+\begin{verbatim}
+\textcolor{color}{yazı}
+\end{verbatim}
+\textcolor{red}{Bu cümle kırmızı yazılmak istenmiştir.}
+
+Yazının boyutlandırılması
+\begin{verbatim}
+\tiny 
+\scriptsize
+\footnotesize
+\small
+\normalsize %yaklaşık 12pt
+\large
+\Large
+\LARGE
+\huge
+\Huge
+\end{verbatim}
+
+\tiny  tiny
+\scriptsize script
+\footnotesize footnote
+\small small
+\normalsize normal
+\large large
+\Large Large
+\LARGE LARGE
+\huge huge
+\Huge HUGE
+
+
+\normalsize
+Yazının şekillendirilmesi
+\begin{verbatim}
+\textbf{text} kalın
+\textit{text} italik
+\emph{text} italik
+\end{verbatim}
+
+\textbf{Kalın} \\
+
+\textit{İtalik} \\
+
+\emph{Alt çizgi metin görünümünü ağırlaştırdığından ötürü, alt çizgi yerine bu tipin kullanılması önerilmektedir!}
+
+\section{Tartışma}
+%Bu bölümde ödev konunuzla ilgili yapılabilecek uygulamalar gibi fikirlerinizi öne sürmeniz beklenmektedir. Fikirlerinizi açıklamayı unutmayın! Daha sonra tez konusu bulmanıza yardımcı olabilirler.
+
+{\LaTeX}'le ilgili son olarak söylemek istediğim, kodlama kısmından gözünüz korkmasın. Herhangi bir bilgisayar programlama dilinde yaptığınız kodlamadan çok daha kolay olduğunu göreceksiniz. Ayrıca sonuçta -eğer elinizde bir de hazır şablon varsa- belgenizin çok daha çabuk, sorunsuz ve daha okunabilir şekilde hazırlanmış olduğunu göreceksiniz.
+\end{document}
