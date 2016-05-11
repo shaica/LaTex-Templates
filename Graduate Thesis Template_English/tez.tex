@@ -1,0 +1,411 @@
+\documentclass[12pt]{report}
+
+%--------------------------------------------------------------------------------------------------------------------------------------------------
+%----------------------------------------------------------------Preamble-----------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------------------------------------------------------------
+
+\usepackage[top=2.5cm, bottom=2.5cm, left=3.5cm, right=2.5cm]{geometry} %For customizing margins, and specified margins for this document.
+
+\usepackage{subfig} %For multiple figures in one entry
+\usepackage{morefloats} %for large number of floats
+\usepackage{fixltx2e} %For text sub and superscripts
+\usepackage{graphicx} %For images
+\usepackage{xcolor} %For images
+\usepackage{pgf} %For images
+\usepackage{tikz} %For images (flowcharts etc.)
+  \usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,positioning,fit,petri, graphs,mindmap,calendar,backgrounds,shapes.geometric} %For images
+  \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30] %flowchart start&stop
+  \tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, text width=4cm, draw=black, fill=orange!30] %flowchart process
+  \tikzstyle{process2} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, text width=7cm, draw=black, fill=orange!30] %flowchart process
+  \tikzstyle{process3} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, text width=10cm, draw=black, fill=orange!30] %flowchart process
+  \tikzstyle{decision} = [diamond, minimum width=1cm, minimum height=1cm, text centered, text width=3cm, aspect=3, draw=black, fill=green!30] %flowchart decision
+  \tikzstyle{decision2} = [diamond, minimum width=1cm, minimum height=1cm, text centered, text width=4cm, aspect=3, draw=black, fill=green!30] %flowchart decision
+  \tikzstyle{junction}=[circle, inner sep=0pt, minimum size=0mm]
+  \tikzstyle{connection} = [circle, minimum width=1cm, minimum height=1cm, text centered,  draw=black, fill=yellow!30]
+  \tikzstyle{connection2} = [circle, minimum width=1cm, minimum height=1cm, text centered,  draw=black, fill=blue!20]
+\usepackage{longtable} %For tables that exceeds one page.
+\usepackage{multirow} %For merging rows in a table
+\usepackage{thmtools} %For theorem, definition, proofs and such
+  \declaretheorem{definition}
+  \declaretheorem{theorem}
+  \declaretheorem{proof}
+  \declaretheorem{hypothesis}
+
+\usepackage{amssymb} %For mathematics
+\usepackage{amsmath} %For mathematics
+\usepackage{mathtools} %For mathematics
+\usepackage{xfrac} %For mathematics
+
+\usepackage{setspace} %For customizing spaces
+\usepackage{parskip}
+  \setlength{\parskip}{6pt plus 1pt minus 1pt} %Setting the space for between paragraphs
+
+\usepackage{enumitem} % For labeled enumeration (like "example 1.")
+
+\usepackage{titlesec} %For customizing titles
+  \titleformat{\chapter}[display]
+  {\bfseries\large}
+  {\filleft\MakeUppercase{\chaptertitlename} \large\thechapter}
+  {2ex}
+  {\titlerule\vspace{2ex}\filleft}
+
+  \titleformat{name=\chapter,numberless}[display]
+  {\bfseries\large}
+  {\titlerule}
+  {-9ex}
+  {\filleft\MakeUppercase}[\vspace{5ex}] \titlespacing*{\chapter}{0pt}{120pt}{6pt}
+
+  \titleformat{\section}{\normalfont\normalsize\bfseries}{\thesection}{6pt}{}
+  \titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{6pt}{}
+  \titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{6pt}{}
+  \setcounter{secnumdepth}{3}
+  \setcounter{tocdepth}{3}
+
+\usepackage{titletoc} %For customizing table of contents title
+\usepackage{appendix} %For appendices
+
+  \titlecontents{chapter}
+  [0ex]
+  {\addvspace{2ex}}
+  {\bfseries\@chapapp\ \thecontentslabel\quad \\}
+  {\hspace{-0ex}}
+  {\hfill\contentspage}
+  [\addvspace{0pt}]
+
+  \g@addto@macro\appendices{%
+    \addtocontents{toc}{\protect\renewcommand{\protect\@chapapp}{\appendixname}}%
+  }
+
+  \renewcommand{\contentsname}{TABLE OF CONTENTS} %For changing the title of table of contents
+  \renewcommand{\bibname}{REFERENCES} %For changing the name of bibliography
+
+  \newcommand\tocheading{\par\smallskip\MakeUppercase\hfill\textbf{Page}}
+  \newcommand\lofheading{\par\smallskip\MakeUppercase\hfill\textbf{Page}\\}
+  \newcommand\lotheading{\par\smallskip\MakeUppercase\hfill\textbf{Page}\\}
+
+%--------------------------------------------------------------------------------------------------------------------------------------------------
+%---------------------------------------------------Single spacing the lot and lof-------------------------------------------------------
+%--------------------------------------------------------------------------------------------------------------------------------------------------
+\makeatletter
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+                       \if@mainmatter
+                         \refstepcounter{chapter}%
+                         \typeout{\@chapapp\space\thechapter.}%
+                         \addcontentsline{toc}{chapter}%
+                                   {\protect\numberline{\thechapter}#1}%
+                       \else
+                         \addcontentsline{toc}{chapter}{#1}%
+                       \fi
+                    \else
+                      \addcontentsline{toc}{chapter}{#1}%
+                    \fi
+                    \chaptermark{#1}%
+%                    \addtocontents{lof}{\protect\addvspace{10\p@}}% NEW
+%                    \addtocontents{lot}{\protect\addvspace{10\p@}}% NEW
+                    \if@twocolumn
+                      \@topnewpage[\@makechapterhead{#2}]%
+                    \else
+                      \@makechapterhead{#2}%
+                      \@afterheading
+                    \fi}
+\makeatother
+%--------------------------------------------------------------------------------------------------------------------------------------------------
+%-------------------------------------------------------Document Begins Here----------------------------------------------------------
+%--------------------------------------------------------------------------------------------------------------------------------------------------
+
+\begin{document}
+
+%--------------------------------------------------------------------------------------------------------------------------------------------------
+%---------------------------------------------------------Numberless Pages-------------------------------------------------------------
+%--------------------------------------------------------------------------------------------------------------------------------------------------
+\newgeometry{top=3cm, bottom=0cm}
+\begin{titlepage}
+\begin{center}
+\begin{singlespacing}
+\uppercase{\large R.T.\\ YILDIZ TECHNICAL UNIVERSITY\\ GRADUATE SCHOOL OF NATURAL AND APPLIED SCIENCES}\\[4cm]
+\uppercase{\large "WRITE THESIS NAME HERE"}\\[5cm]
+\uppercase{\large "WRITE YOUR NAME HERE"}\\[3cm]
+\uppercase{\large MASTER'S THESIS\\ "WRITE YOUR DEPARTMENT HERE"\\ "WRITE YOUR PROGRAMME HERE"}\\[3cm] %Replace "MASTER'S THESIS" with "PhD. THESIS" if necessary
+\uppercase{\large ADVISOR\\ "WRITE YOUR ADVISOR'S PREFIX AND NAME HERE"}\\[2cm]
+\uppercase{\large ISTANBUL, "WRITE THE YEAR OF SUBMITTANCE HERE"}
+\end{singlespacing}
+\end{center}
+\end{titlepage}
+\restoregeometry
+\begin{titlepage}
+\begin{center}
+\uppercase{\bfseries\large REPUBLIC OF TURKEY\\ YILDIZ TECHNICAL UNIVERSITY\\ GRADUATE SCHOOL OF NATURAL AND APPLIED SCIENCES}\\[1.5cm]
+\uppercase{\bfseries\large "WRITE YOUR THESIS NAME HERE"}\\[1.5cm]
+\end{center}
+\begin{singlespacing}
+\textnormal{A thesis submitted by "WRITE YOUR NAME HERE" in partial fulfillment of the requirements for the degree of \textbf{MASTER OF SCIENCE} is approved by the committee on \textit{WRITE YOUR PRESANTATION DATE HERE} in "WRITE YOUR DEPARTMENT HERE", "WRITE YOUR PROGRAMME HERE".}\\[1.5cm] %Change to "DOCTOR OF SCIENCE" in place of "MASTER OF SCIENCE".
+\textbf{Thesis Advisor}\\
+\textnormal{"WRITE YOUR ADVISOR'S PREFIX AND NAME HERE"\\ Yildiz Technical University\\"WRITE YOUR DEPARTMENT HERE"}\\[1.5cm]
+\textbf{Approved by the Examining Committee}\\
+\textnormal{"WRITE YOUR ADVISOR'S PREFIX AND NAME HERE"\\ Yildiz Technical University\\"WRITE YOUR DEPARTMENT HERE"}\\[1.5cm]
+\textnormal{"WRITE JURY NO.1 PREFIX AND NAME HERE"\\ Yildiz Technical University\\"WRITE JURY NO.1 DEPARTMENT HERE"}\\[1.5cm]
+\textnormal{"WRITE JURY NO.2 PREFIX AND NAME HERE" \\ "WRITE JURY NO.2 UNIVERSITY NAME HERE"\\"WRITE JURY NO.2 DEPARTMENT HERE"}\\[1.5cm]
+\end{singlespacing}
+\end{titlepage}
+----------------------------------------------------------------------------------------------------------%ACKNOWLEDGMENTS PAGE%--------------------------------
+--------------------------------------------------------------------------------
+
+\begin{titlepage}
+\topmargin=80pt
+\begin{flushright}
+\uppercase{\bfseries{\large acknowlegements}}\\[0.5cm]
+\hrule
+\vspace{2ex}%
+\end{flushright}
+\begin{singlespacing}
+"WRITE YOUR ACKNOWLEDGEMENTS HERE"
+
+\end{singlespacing}
+\end{titlepage}
+
+%--------------------------------------------------------------------------------------------------------------------------------------------------
+%------------------------------Roman Numbered Pages--------------------------
+%--------------------------------------------------------------------------------------------------------------------------------------------------
+
+\pagenumbering{roman}
+\setcounter{page}{4}
+\tableofcontents
+\addtocontents{toc}{\tocheading}
+
+\chapter*{LIST OF SYMBOLS}
+\vspace{-2pt}
+\addcontentsline{toc}{chapter}{LIST OF SYMBOLS}
+\begin{table}[h]
+	\begin{tabular}{p{2cm} l}
+    %CHANGE BETWEEN TABULAR ENVIRONMENT ACCORDINGLY TO YOUR THESIS
+		\(\textbf{a\textsubscript{ij}}\) & Estimated weight ratio of specimens \(i\) and \(j\) \\
+		\(\textbf{E\textsubscript{G}}\) & Set of edges for a graph G\\
+		\(\textbf{V\textsubscript{G}}\) & Set of vertices for a graph G\\
+	\end{tabular}
+\end{table}
+
+
+\chapter*{LIST OF ABBREVIATIONS}
+\vspace{-2pt}
+\addcontentsline{toc}{chapter}{LIST OF ABBREVIATIONS}
+\begin{table}[h]
+	\begin{tabular}{p{2cm} l}
+    %CHANGE BETWEEN TABULAR ENVIRONMENT ACCORDINGLY TO YOUR THESIS
+		\textbf{AHP} & Analytic Hierarchy Process\\
+		\textbf{CI} & Consistency Index\\
+	\end{tabular}
+\end{table}
+
+{%
+\let\oldnumberline\numberline%
+\renewcommand{\numberline}{\figurename~\oldnumberline}%
+\listoffigures%
+\addtocontents{lof}{\lofheading}
+}
+
+{%
+\let\oldnumberline\numberline%
+\renewcommand{\numberline}{\tablename~\oldnumberline}%
+\listoftables%
+\addtocontents{lot}{\lotheading}
+}
+
+\chapter*{ABSTRACT}
+\vspace{-30pt}
+\begin{center}
+\uppercase{\large{\bfseries{"YOUR THESIS NAME HERE"}}}\\[1cm]
+
+"YOUR NAME HERE"\\[1cm]
+
+"YOUR DEPARTMENT NAME HERE"\\
+MSc. Thesis\\[1cm] %CHANGE WITH "PhD. THESIS" IF NECESSARY
+
+Advisor: "WRITE YOUR ADVISOR'S PREFIX AND NAME HERE"\\[1cm]
+\end{center}
+
+\begin{singlespacing}
+"WRITE YOUR ABSTRACT IN ENGLISH HERE"
+
+\vspace{3cm}
+\textbf{Keywords:} "WRITE YOUR KEYWORDS HERE WITH USING COMMA AS SEPARATOR"
+\end{singlespacing}
+
+\vspace{1ex}
+\hrule
+\begin{flushright}
+\textbf{YILDIZ TECHNICAL UNIVERSITY \\ GRADUATE SCHOOL OF NATURAL AND APPLIED SCIENCES}
+\end{flushright}
+
+\chapter*{\"{O}ZET}
+\vspace{-30pt}
+\begin{center}
+\uppercase{\large{\bfseries{"WRITE YOUR THESIS NAME HERE IN TURKISH"}}}\\[1cm]
+
+"WRITE YOUR NAME HERE"\\[1cm]
+
+"WRITE YOUR DEPARTMENT NAME IN TURKISH HERE"\\
+Y\"{u}ksek Lisans Tezi\\[1cm] %CHANGE TO "DOKTORA TEZİ" IF NECESSARY
+
+Dan{\i}\c{s}man: "WRITE YOUR ADVISOR'S PREFIX AND NAME HERE IN TURKISH"\\[1cm]
+\end{center}
+
+\begin{singlespacing}
+"WRITE YOUR ABSTRACT HERE IN TURKISH"
+
+\vspace{2.5cm}
+\textbf{Anahtar Kelimeler:} "WRITE YOUR KEYWORDS HERE WITH USING COMMA AS SEPARATOR IN TURKISH"
+\end{singlespacing}
+
+\vspace{1ex}
+\hrule
+\begin{flushright}
+\textbf{YILDIZ TEKNIK UNIVERSITESI \\ FEN BILIMLERI ENSTITUSU}
+\end{flushright}
+%--------------------------------------------------------------------------------------------------------------------------------------------------
+%----------------------------------------------------------Main Document------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------------------------------------------------------------
+
+\newpage
+\pagenumbering{arabic}
+
+\chapter{Introduction} %DO NOT CHANGE THE NAME OF CHAPTER!!! GRADUATE SCHOOL OF NATURAL AND APPLIED SCIENCES REQUIRES THIS CHAPTER.
+"WRITE YOUR INTRODUCTION CHAPTER HERE"
+
+\section{Literature Review} %DO NOT CHANGE THE NAME OF CHAPTER!!! GRADUATE SCHOOL OF NATURAL AND APPLIED SCIENCES REQUIRES THIS CHAPTER.
+\label{sec: literature review}
+"WRITE YOUR LITERATURE REVIEW HERE"
+
+\section{Original Contribution} %GRADUATE SCHOOL OF NATURAL AND APPLIED SCIENCES REQUIRES THIS CHAPTER. HOWEVER YOU CAN CHANGE NAME OF CHAPTER TO YOUR NEEDS FROM THESE THREE OPTIONS:  1. "ORIGINAL CONTRIBUTION"
+                %     2. "HYPOTHESIS"
+                %     3. "PURPOSE OF THESIS"
+\label{sec: original}
+"WRITE YOUR ORIGINAL CONTRIBUTION or HYPOTHESIS or PURPOSE OF THESIS HERE"
+
+\section{"WRITE YOUR SECTION NAME HERE"}
+\label{sec: "WRITE YOUR SECTION LABEL HERE"}
+
+"BELOW IS A SAMPLE TABLE GIVEN FOR CAPTION ILLUSTRAION. CAPTION OF TABLES MUST BE ON TOP OF TABLES. DO NOT CHANGE THE PLACEMENT OF CAPTION. YOU CAN MODIFY CAPTION AND IT'S LABEL TO YOUR NEEDS."
+\begin{table}
+	\begin{center}
+	\caption{SAMPLE TABLE\label{tab: LABEL1}}
+		\begin{tabular}{| c | c |}
+		\hline
+		HEADER 1  & HEADER 2 \\
+		\hline
+		1 & 2 \\
+		\hline
+		3 & 4 \\
+		\hline
+		5  & 6 \\
+		\hline
+		7 & 8 \\
+		\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+"BELOW IS A TIKZ PICTURE SAMPLE ENVIRONMENT. PLEASE LOOK UP TIKZ&PGF MANUAL FOR FURTHER INFORMATION."
+
+\begin{figure}[h]
+	\begin{center}
+		\begin{tikzpicture}
+			"WRITE  YOUR TIKZ & PGF CODE HERE. DO NOT CHANGE CAPTION PLACEMENT."
+		\end{tikzpicture}
+	\end{center}
+	\caption{"WRITE YOUR CAPTION HERE" \label{fig: "WRITE YOUR LABEL HERE"}}
+\end{figure}
+
+\subsection{"SUBSECTION NAME HERE"}
+\label{sec: "LABEL HERE"}
+"DO NOT FORGET: GRADUATE SCHOOL OF NATURAL AND APPLIED SCIENCES ALLOW UP TO 4 LEVEL SUBSECTIONING. YOU CAN USE BELOW ACCORDING TO YOUR NEEDS:"
+"\subsubsection"
+"\subsubsubsection"
+
+"BELOW IS A SAMPLE FIGURE ENVIRONMENT. DO NOT CHANGE THE CAPTION LOCATION. FIGURE CAPTIONS MUST BE LOCATED UNDER THE FIGURE. ALSO DO NOT FORGET TO ADD YOUR FIGURE FILE UNDER THE SAME DIRECTORY AS YOUR TEX FILE. FOR SUBFIGURE ENVIRONMENT PLEASE LOOK UP FOR LATEX UNDER WIKIBOOKS."
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{"WRITE YOUR FIGURE FILE NAME HERE"}
+\end{center}
+\caption{"CAPTION HERE" \label{fig: "LABEL HERE"}}
+\end{figure}
+
+
+%--------------------------------------------------------------------------------------------------------------------------------------------------
+%---------------------------------------------------------------Bibliography------------------------------------------------------------------
+%!!!!!!!!!!!!!!!!!!DO NOT CHANGE!!! ONLY MODIFY MASTERS.BIB FILE!!!!!!!!!!!!!!!!
+
+\bibliography{Masters}{}
+\bibliographystyle{yildiz_fbe}
+\addcontentsline{toc}{chapter}{REFERENCES}
+%--------------------------------------------------------------------------------------------------------------------------------------------------
+%-------------------------------------Appendices-------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------------------------------------------------------------
+
+\begin{appendices}
+\chapter{"APPENDIX NO.1 NAME HERE"}
+\label{appx: "LABEL HERE"}
+\onehalfspacing
+
+"YOU CAN COMMENT THIS SECTION IF YOU DO NOT NEED AND APPENDICES CHAPTER. YOU CAN INCREASE THE NUMBER OF APPENDICES CHAPTERS AS BELOW."
+
+\chapter{"APPENDIX NO.1 NAME HERE"}
+\label{sec: "LABEL HERE"}
+
+
+\end{appendices}
+
+%--------------------------------------------------------------------------------------------------------------------------------------------------
+%-----------------------------Cirriculum Vitae---------------------------
+%--------------------------------------------------------------------------------------------------------------------------------------------------
+\chapter*{CURRICULUM VITAE}
+\addcontentsline{toc}{chapter}{CURRICULUM VITAE}
+
+\begin{table}[!h]
+\begin{tabular}{l l}
+\multicolumn{2}{l}{\bfseries{PERSONAL INFORMATION}}\\[2ex]
+\bfseries{Name Surname} & "WRITE YOUR NAME HERE"\\[2ex]
+\bfseries{Date of Birth and Place} & "WRITE YOUR BIRTHDAY HERE" - "WRITE YOUR BIRTHPLACE HERE"\\[2ex]
+\bfseries{Foreign Languages} & "WRITE YOUR LANGUAGES USING COMMA AS A SEPARATOR"\\[5ex]
+\end{tabular}
+
+\begin{tabular}{l l l p{2cm}}
+\multicolumn{4}{l}{\bfseries{EDUCATION}}\\[2ex]
+\bfseries{Degree} & \bfseries{Field/Department} & \bfseries{School/University} & \bfseries{Date of Graduation} \\[2ex]
+PhD. & Dept. of "DEPARTMENT NAME HERE" & "UNIVERSITY HERE" & "DATE OF GRADUATION" \\ [2ex]
+Master's & Dept. of "DEPARTMENT NAME HERE" & "UNIVERSITY HERE" & "DATE OF GRADUATION" \\[2ex]
+Undergraduate & Dept. of "DEPARTMENT NAME HERE" & "UNIVERSITY HERE" & "DATE OF GRADUATION" \\[2ex]
+Highschool & "HIGHSCHOOL HERE" & "DATE OF GRADUATION" \\[5ex]
+\end{tabular}
+
+\begin{tabular}{l p{9.5cm} l}
+\multicolumn{3}{l}{\bfseries{WORK EXPERIENCE}}\\[2ex]
+\bfseries{Year} & \bfseries{Corporation/Institute} & \bfseries{Enrollment} \\[2ex]
+"START" - \dots & "CORPORATION OR INSTUTE HERE" & "YOUR JOB TITLE HERE" \\[2ex] %THIS ROW IS FOR YOUR ONGOING WORK EXPERIENCE. IF YOU ARE NOT EMPLOYED IN THE PRESENT REPLACE "\dots" WITH AN END DATE
+"START" - "END" & "CORPORATION OR INSTUTE HERE" & "YOUR JOB TITLE HERE" \\[2ex]
+"START" - "END" & "CORPORATION OR INSTUTE HERE" & "YOUR JOB TITLE HERE" \\[2ex]
+"START" - "END" & "CORPORATION OR INSTUTE HERE" & "YOUR JOB TITLE HERE" \\[2ex]
+%IF YOUR WORK EXPERIENCE EXCEEDS ONE PAGE CONTINUE TO NEXT TABLE ENVIRONMENT
+\end{tabular}
+\end{table}
+
+\begin{table}[!ht]
+\begin{tabular}{l p{9.5cm} l}
+\multicolumn{3}{l}{\bfseries{WORK EXPERIENCE}}\\[2ex]
+"START" - "END" & "CORPORATION OR INSTUTE HERE" & "YOUR JOB TITLE HERE" \\[2ex]
+"START" - "END" & "CORPORATION OR INSTUTE HERE" & "YOUR JOB TITLE HERE" \\[2ex]
+"START" - "END" & "CORPORATION OR INSTUTE HERE" & "YOUR JOB TITLE HERE" \\[5ex]
+\end{tabular}
+\begin{tabular}{p{15.5cm}}
+
+\bfseries{PUBLISHMENTS} \\[2ex]
+\bfseries{Conference Papers} \\[2ex]
+\textbf{1.} "PUBLISHED WORK 1"\\[2ex]
+\textbf{2.} "PUBLISHED WORK 2"\\[2ex]
+\textbf{3.} "YOU CAN INCREASE NUMBER OF PUBLISHMENTS AS SHOWN. WRITE YOUR PUBLISHMENTS SAME AS BIBLIOGRAPHY SPECIFICATIONS."\\[5ex]
+\end{tabular}
+\end{table}
+%--------------------------------------------------------------------------------------------------------------------------------------------------
+%--------------------End of Document----------------------------------------
+%--------------------------------------------------------------------------------------------------------------------------------------------------
+\end{document}
