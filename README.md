@@ -6,7 +6,8 @@ Template for "Graduate School of Natural and Applied Sciences", Yildiz Technical
 ### Issues
     1. Web references is not displayed as it is defined in guidelines.
 
-## General project report template for graduate classes.
+## General project report template for graduate classes:
+This template is prepared for the 2015 Fall Semester Seminar class lectured by Assist. Prof. Dr. Vildan Özkır.
     1. Language = Turkish
     2. Basic explanation of how to write with LaTex.
     3. Basic explanation of how to write project report.
