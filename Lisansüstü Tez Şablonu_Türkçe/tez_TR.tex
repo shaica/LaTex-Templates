@@ -6,14 +6,18 @@
 
 \usepackage[top=2.5cm, bottom=2.5cm, left=3.5cm, right=2.5cm]{geometry} %For customizing margins, and specified margins for this document.
 
-\usepackage{subfig} %For multiple figures in one entry
-\usepackage{morefloats} %for large number of floats
-\usepackage{fixltx2e} %For text sub and superscripts
-\usepackage{graphicx} %For images
-\usepackage{xcolor} %For images
-\usepackage{pgf} %For images
-\usepackage{tikz} %For images (flowcharts etc.)
-  \usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,positioning,fit,petri, graphs,mindmap,calendar,backgrounds,shapes.geometric} %For images
+\usepackage[turkish]{babel} %Türkçe bölüm isimleri
+\usepackage[utf8]{inputenc} %Türkçe karakterler
+\usepackage[T1]{fontenc} %Türkçe heceleme
+
+\usepackage{subfig} %Bir girişte birden fazla şekil koymak için
+\usepackage{morefloats} %çok sayıda şekil ve tablo kullanılabilmesi için
+\usepackage{fixltx2e} %Yazı içerisinde üst karakter ve alt karakter kullanımı için
+\usepackage{graphicx} %Şekiller için
+\usepackage{xcolor} %Şekiller için
+\usepackage{pgf} %Şekiller için
+\usepackage{tikz} %Şekiller için (akış şeması vb.)
+  \usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,positioning,fit,petri, graphs,mindmap,calendar,backgrounds,shapes.geometric} %Şekiller için
   \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30] %flowchart start&stop
   \tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, text width=4cm, draw=black, fill=orange!30] %flowchart process
   \tikzstyle{process2} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, text width=7cm, draw=black, fill=orange!30] %flowchart process
@@ -23,26 +27,26 @@
   \tikzstyle{junction}=[circle, inner sep=0pt, minimum size=0mm]
   \tikzstyle{connection} = [circle, minimum width=1cm, minimum height=1cm, text centered,  draw=black, fill=yellow!30]
   \tikzstyle{connection2} = [circle, minimum width=1cm, minimum height=1cm, text centered,  draw=black, fill=blue!20]
-\usepackage{longtable} %For tables that exceeds one page.
-\usepackage{multirow} %For merging rows in a table
-\usepackage{thmtools} %For theorem, definition, proofs and such
+\usepackage{longtable} %Birden fazla sayfaya yayılan tablolar için
+\usepackage{multirow} %Tablo içinde satırları birleştirmek için
+\usepackage{thmtools} %Teorem, tanım, ispat vb. için
   \declaretheorem{definition}
   \declaretheorem{theorem}
   \declaretheorem{proof}
   \declaretheorem{hypothesis}
 
-\usepackage{amssymb} %For mathematics
-\usepackage{amsmath} %For mathematics
-\usepackage{mathtools} %For mathematics
-\usepackage{xfrac} %For mathematics
+\usepackage{amssymb} %Matematik için
+\usepackage{amsmath} %Matematik için
+\usepackage{mathtools} %Matematik için
+\usepackage{xfrac} %Matematik için
 
-\usepackage{setspace} %For customizing spaces
+\usepackage{setspace} %Sayfa boşluklarını düzenlemek için
 \usepackage{parskip}
-  \setlength{\parskip}{6pt plus 1pt minus 1pt} %Setting the space for between paragraphs
+  \setlength{\parskip}{6pt plus 1pt minus 1pt} %Paragraflar arası boşlukları belirlemek için
 
-\usepackage{enumitem} % For labeled enumeration (like "example 1.")
+\usepackage{enumitem} % ``örnek 1.'' gibi etiketli numaralandırma listeleri için
 
-\usepackage{titlesec} %For customizing titles
+\usepackage{titlesec} %Başlıkları düzenlemek için
   \titleformat{\chapter}[display]
   {\bfseries\large}
   {\filleft\MakeUppercase{\chaptertitlename} \large\thechapter}
@@ -61,8 +65,9 @@
   \setcounter{secnumdepth}{3}
   \setcounter{tocdepth}{3}
 
-\usepackage{titletoc} %For customizing table of contents title
-\usepackage{appendix} %For appendices
+\usepackage{titletoc} %İçindekiler başlığını düzenlemek için
+
+\usepackage{appendix} %Ekler için
 
   \titlecontents{chapter}
   [0ex]
@@ -76,12 +81,13 @@
     \addtocontents{toc}{\protect\renewcommand{\protect\@chapapp}{\appendixname}}%
   }
 
-  \renewcommand{\contentsname}{TABLE OF CONTENTS} %For changing the title of table of contents
-  \renewcommand{\bibname}{REFERENCES} %For changing the name of bibliography
 
-  \newcommand\tocheading{\par\smallskip\MakeUppercase\hfill\textbf{Page}}
-  \newcommand\lofheading{\par\smallskip\MakeUppercase\hfill\textbf{Page}\\}
-  \newcommand\lotheading{\par\smallskip\MakeUppercase\hfill\textbf{Page}\\}
+  \renewcommand{\contentsname}{İÇİNDEKİLER} %İçindekiler başlığının düzenlenmesi
+  \renewcommand{\bibname}{KAYNAKLAR} %Kaynakça başlığnıın düzenlenmesi
+
+  \newcommand\tocheading{\par\smallskip\MakeUppercase\hfill\textbf{Sayfa}}
+  \newcommand\lofheading{\par\smallskip\MakeUppercase\hfill\textbf{Sayfa}\\}
+  \newcommand\lotheading{\par\smallskip\MakeUppercase\hfill\textbf{Sayfa}\\}
 
 %--------------------------------------------------------------------------------------------------------------------------------------------------
 %---------------------------------------------------Single spacing the lot and lof-------------------------------------------------------
@@ -118,53 +124,58 @@
 %--------------------------------------------------------------------------------------------------------------------------------------------------
 %---------------------------------------------------------Numberless Pages-------------------------------------------------------------
 %--------------------------------------------------------------------------------------------------------------------------------------------------
+\shorthandoff{=} %Türkçe babel paketinde = işareti başka amaçla kullanıldığından hatanın önüne geçilmesi için yapılan bir düzenleme. İngilizce hazırlanan belgelerde bu kısmı eklemeye gerek yoktur.
 \newgeometry{top=3cm, bottom=0cm}
+\shorthandon{=}
 \begin{titlepage}
 \begin{center}
 \begin{singlespacing}
-\uppercase{\large R.T.\\ YILDIZ TECHNICAL UNIVERSITY\\ GRADUATE SCHOOL OF NATURAL AND APPLIED SCIENCES}\\[4cm]
-\uppercase{\large "WRITE THESIS NAME HERE"}\\[5cm]
-\uppercase{\large "WRITE YOUR NAME HERE"}\\[3cm]
-\uppercase{\large MASTER'S THESIS\\ "WRITE YOUR DEPARTMENT HERE"\\ "WRITE YOUR PROGRAMME HERE"}\\[3cm] %Replace "MASTER'S THESIS" with "PhD. THESIS" if necessary
-\uppercase{\large ADVISOR\\ "WRITE YOUR ADVISOR'S PREFIX AND NAME HERE"}\\[2cm]
-\uppercase{\large ISTANBUL, "WRITE THE YEAR OF SUBMITTANCE HERE"}
+\uppercase{\large T.C.\\ YILDIZ TEKNİK ÜNİVERSİTESİ\\ FEN BİLİMLERİ ENSTİTÜSÜ}\\[4cm]
+\uppercase{\large ``TEZİNİZİN ADINI BURAYA YAZIN"}\\[5cm]
+\uppercase{\large ``ADINIZI BURAYA YAZIN"}\\[3cm]
+\uppercase{\large YUKSEK LİSANS TEZİ\\ ``BÖLÜMÜNÜZÜN ADINI BURAYA YAZIN"\\ ``PROGRAMINIZIN ADINI BURAYA YAZIN"}\\[3cm] %YUKSEK LİSANS TEZI `ni DOKTORA TEZİ ile değiştirebilirsiniz
+\uppercase{\large DANISMAN\\ ``DANISMANINIZIN ÜNVANI VE ADINI BURAYA YAZIN"}\\[2cm]
+\uppercase{\large ISTANBUL, ``TEZ TESLİM YILINI YAZIN"}
 \end{singlespacing}
 \end{center}
 \end{titlepage}
 \restoregeometry
 \begin{titlepage}
 \begin{center}
-\uppercase{\bfseries\large REPUBLIC OF TURKEY\\ YILDIZ TECHNICAL UNIVERSITY\\ GRADUATE SCHOOL OF NATURAL AND APPLIED SCIENCES}\\[1.5cm]
-\uppercase{\bfseries\large "WRITE YOUR THESIS NAME HERE"}\\[1.5cm]
+\uppercase{\bfseries\large TÜRKİYE CUMHURİYETİ\\ YILDIZ TEKNİK ÜNİVERSİTESİ\\ FEN BİLİMLERİ ENSTİTÜSÜ}\\[1.5cm]
+\uppercase{\bfseries\large ``TEZİNİZİN ADINI BURAYA YAZIN"}\\[1.5cm]
 \end{center}
 \begin{singlespacing}
-\textnormal{A thesis submitted by "WRITE YOUR NAME HERE" in partial fulfillment of the requirements for the degree of \textbf{MASTER OF SCIENCE} is approved by the committee on \textit{WRITE YOUR PRESANTATION DATE HERE} in "WRITE YOUR DEPARTMENT HERE", "WRITE YOUR PROGRAMME HERE".}\\[1.5cm] %Change to "DOCTOR OF SCIENCE" in place of "MASTER OF SCIENCE".
-\textbf{Thesis Advisor}\\
-\textnormal{"WRITE YOUR ADVISOR'S PREFIX AND NAME HERE"\\ Yildiz Technical University\\"WRITE YOUR DEPARTMENT HERE"}\\[1.5cm]
-\textbf{Approved by the Examining Committee}\\
-\textnormal{"WRITE YOUR ADVISOR'S PREFIX AND NAME HERE"\\ Yildiz Technical University\\"WRITE YOUR DEPARTMENT HERE"}\\[1.5cm]
-\textnormal{"WRITE JURY NO.1 PREFIX AND NAME HERE"\\ Yildiz Technical University\\"WRITE JURY NO.1 DEPARTMENT HERE"}\\[1.5cm]
-\textnormal{"WRITE JURY NO.2 PREFIX AND NAME HERE" \\ "WRITE JURY NO.2 UNIVERSITY NAME HERE"\\"WRITE JURY NO.2 DEPARTMENT HERE"}\\[1.5cm]
+\textnormal{``BURAYA ADINIZI YAZIN'' tarafından hazırlanan tez çalışması ``BURAYA TEZİNİZİN SUNUM TARİHİNİ YAZIN'' tarihinde aşağıdaki jüri üyeleri tarafından Yıldız Teknik Üniversitesi Fen Bilimleri Enstitüsü ``BURAYA ANABİLİM DALINIZI YAZIN'' Anabilim Dalı'nda \textbf{YÜKSEK LİSANS TEZİ} olarak kabul edilmiştir.}\\[1.5cm] %YÜKSEK LİSANS TEZİ'ni DOKTORA TEZİ `ne çevirebilirsiniz
+\textbf{Tez Danışmanı}\\
+\textnormal{``DANIŞMANINIZIN ÜNVANI VE ADINI BURAYA YAZIN"\\ Yıldız Teknik Üniversitesi\\''BÖLÜM ADINIZI BURAYA YAZIN"}\\[1.5cm]
+\textbf{Jüri Üyeleri}\\
+\textnormal{``DANIŞMANINIZIN ÜNVANI VE ADINI BURAYA YAZIN"\\ Yıldız Teknik Üniversitesi\\''BÖLÜM ADINIZI BURAYA YAZIN"}\\[1.5cm]
+\textnormal{``1. JÜRİNİN ÜNVAN VE ADINI BURAYA YAZIN"\\ Yıldız Teknik Üniversitesi\\JÜRİ ANABİLİM DALINI BURAYA YAZIN"}\\[1.5cm]
+\textnormal{``2. JÜRİNİN ÜNVAN VE ADINI BURAYA YAZIN"\\ ``JÜRİNİN ÜNİVERSİTE ADI''\\"JÜRİ ANABİLİM DALINI BURAYA YAZIN"}\\[1.5cm]
+%Jüri satırlarını gerektiği kadar arttırmayı unutmayın!
 \end{singlespacing}
 \end{titlepage}
-----------------------------------------------------------------------------------------------------------%ACKNOWLEDGMENTS PAGE%--------------------------------
+---------------------------------------------%ÖNSÖZ SAYFASI%--------------------------------
 --------------------------------------------------------------------------------
 
 \begin{titlepage}
+\shorthandoff{=}
 \topmargin=80pt
+\shorthandon{=}
 \begin{flushright}
-\uppercase{\bfseries{\large acknowlegements}}\\[0.5cm]
+\uppercase{\bfseries{\large önsöz}}\\[0.5cm]
 \hrule
 \vspace{2ex}%
 \end{flushright}
 \begin{singlespacing}
-"WRITE YOUR ACKNOWLEDGEMENTS HERE"
+"BURAYA ÖNSÖZÜNÜZÜ YAZIN"
 
 \end{singlespacing}
 \end{titlepage}
 
 %--------------------------------------------------------------------------------------------------------------------------------------------------
-%------------------------------Roman Numbered Pages--------------------------
+%------------------------------NORMAL SAYILI SAYFALAR--------------------------
 %--------------------------------------------------------------------------------------------------------------------------------------------------
 
 \pagenumbering{roman}
@@ -172,12 +183,12 @@
 \tableofcontents
 \addtocontents{toc}{\tocheading}
 
-\chapter*{LIST OF SYMBOLS}
+\chapter*{SİMGE LİSTESİ}
 \vspace{-2pt}
-\addcontentsline{toc}{chapter}{LIST OF SYMBOLS}
+\addcontentsline{toc}{chapter}{SİMGE LİSTESİ}
 \begin{table}[h]
 	\begin{tabular}{p{2cm} l}
-    %CHANGE BETWEEN TABULAR ENVIRONMENT ACCORDINGLY TO YOUR THESIS
+    %SATIRLARI İHTİYACINIZA GÖRE DÜZENLEYİN
 		\(\textbf{a\textsubscript{ij}}\) & Estimated weight ratio of specimens \(i\) and \(j\) \\
 		\(\textbf{E\textsubscript{G}}\) & Set of edges for a graph G\\
 		\(\textbf{V\textsubscript{G}}\) & Set of vertices for a graph G\\
@@ -185,12 +196,12 @@
 \end{table}
 
 
-\chapter*{LIST OF ABBREVIATIONS}
+\chapter*{KISALTMA LİSTESİ}
 \vspace{-2pt}
-\addcontentsline{toc}{chapter}{LIST OF ABBREVIATIONS}
+\addcontentsline{toc}{chapter}{KISALTMA LİSTESİ}
 \begin{table}[h]
 	\begin{tabular}{p{2cm} l}
-    %CHANGE BETWEEN TABULAR ENVIRONMENT ACCORDINGLY TO YOUR THESIS
+    %SATIRLARI İHTİYACINIZA GÖRE DÜZENLEYİN
 		\textbf{AHP} & Analytic Hierarchy Process\\
 		\textbf{CI} & Consistency Index\\
 	\end{tabular}
@@ -209,6 +220,33 @@
 \listoftables%
 \addtocontents{lot}{\lotheading}
 }
+
+
+\chapter*{\"{O}ZET}
+\vspace{-30pt}
+\begin{center}
+\uppercase{\large{\bfseries{"TEZİNİZİN ADI"}}}\\[1cm]
+
+"ADINIZ"\\[1cm]
+
+"BÖLÜMÜNÜZÜN ADI"\\
+Yüksek Lisans Tezi\\[1cm] %"DOKTORA TEZİ" OLARAK DEĞİŞTİREBİLİRSİNİZ
+
+Danışman: "DANIŞMAN ÜNVAN VE ADI"\\[1cm]
+\end{center}
+
+\begin{singlespacing}
+"BURAYA ÖZETİNİZİ YAZIN"
+
+\vspace{2.5cm}
+\textbf{Anahtar Kelimeler:} "VİRGÜL İLE AYIRARAK 5 ADET ANAHTAR KELİME YAZINIZ"
+\end{singlespacing}
+
+\vspace{1ex}
+\hrule
+\begin{flushright}
+\textbf{YILDIZ TEKNIK UNIVERSITESI \\ FEN BILIMLERI ENSTITUSU}
+\end{flushright}
 
 \chapter*{ABSTRACT}
 \vspace{-30pt}
@@ -236,58 +274,40 @@ Advisor: "WRITE YOUR ADVISOR'S PREFIX AND NAME HERE"\\[1cm]
 \textbf{YILDIZ TECHNICAL UNIVERSITY \\ GRADUATE SCHOOL OF NATURAL AND APPLIED SCIENCES}
 \end{flushright}
 
-\chapter*{\"{O}ZET}
-\vspace{-30pt}
-\begin{center}
-\uppercase{\large{\bfseries{"WRITE YOUR THESIS NAME HERE IN TURKISH"}}}\\[1cm]
 
-"WRITE YOUR NAME HERE"\\[1cm]
-
-"WRITE YOUR DEPARTMENT NAME IN TURKISH HERE"\\
-Y\"{u}ksek Lisans Tezi\\[1cm] %CHANGE TO "DOKTORA TEZİ" IF NECESSARY
-
-Dan{\i}\c{s}man: "WRITE YOUR ADVISOR'S PREFIX AND NAME HERE IN TURKISH"\\[1cm]
-\end{center}
-
-\begin{singlespacing}
-"WRITE YOUR ABSTRACT HERE IN TURKISH"
-
-\vspace{2.5cm}
-\textbf{Anahtar Kelimeler:} "WRITE YOUR KEYWORDS HERE WITH USING COMMA AS SEPARATOR IN TURKISH"
-\end{singlespacing}
-
-\vspace{1ex}
-\hrule
-\begin{flushright}
-\textbf{YILDIZ TEKNIK UNIVERSITESI \\ FEN BILIMLERI ENSTITUSU}
-\end{flushright}
 %--------------------------------------------------------------------------------------------------------------------------------------------------
-%----------------------------------------------------------Main Document------------------------------------------------------------------
+%-------------------------------------------ANA METİN------------------------------------------------------------------
 %--------------------------------------------------------------------------------------------------------------------------------------------------
 
 % \newpage
 \pagenumbering{arabic}
 
-\chapter{Introduction} %DO NOT CHANGE THE NAME OF CHAPTER!!! GRADUATE SCHOOL OF NATURAL AND APPLIED SCIENCES REQUIRES THIS CHAPTER.
-"WRITE YOUR INTRODUCTION CHAPTER HERE"
+\chapter{Giriş} %BU BÖLÜMÜN ADINI DEĞİŞTİRMEYİN. FBE TARAFINDAN İSTENİLEN ZORUNLU BAŞLIKTIR
+"GİRİŞ KISMINI BURAYA YAZIN"
 
-\section{Literature Review} %DO NOT CHANGE THE NAME OF CHAPTER!!! GRADUATE SCHOOL OF NATURAL AND APPLIED SCIENCES REQUIRES THIS CHAPTER.
-\label{sec: literature review}
-"WRITE YOUR LITERATURE REVIEW HERE"
+\section{Literatür Özeti} %BU BÖLÜMÜN ADINI DEĞİŞTİRMEYİN. FBE TARAFINDAN İSTENİLEN ZORUNLU BAŞLIKTIR
+\label{sec: literatur ozeti}
+"LİTERATÜR ÖZETİNİZİ BURAYA YAZIN"
 
-\section{Original Contribution} %GRADUATE SCHOOL OF NATURAL AND APPLIED SCIENCES REQUIRES THIS CHAPTER. HOWEVER YOU CAN CHANGE NAME OF CHAPTER TO YOUR NEEDS FROM THESE THREE OPTIONS:  1. "ORIGINAL CONTRIBUTION"
-                %     2. "HYPOTHESIS"
-                %     3. "PURPOSE OF THESIS"
+\section{Tezin Amacı} %BU BÖLÜMÜN ADINI DEĞİŞTİRMEYİN. FBE TARAFINDAN İSTENİLEN ZORUNLU BAŞLIKTIR
+\label{sec: amaç}
+"TEZİN AMACINI BURAYA YAZINIZ"
+
+\section{Orijinal Katkı} %FBE TARAFINDAN İSTENİLEN ZORUNLU BAŞLIKTIR. BU BAŞLIĞI AŞAĞIDAKİ 2 SENEÇEKTEN SİZE UYGUN OLANLA DEĞİŞTİREBİLİRSİNİZ
+		%   1. "Orijinal Katkı"
+                %     2. "Hipotez"
 \label{sec: original}
-"WRITE YOUR ORIGINAL CONTRIBUTION or HYPOTHESIS or PURPOSE OF THESIS HERE"
+"BURADA SEÇTİĞİNİZ BAŞLIĞIN ALTINI DOLDURUNUZ"
 
-\section{"WRITE YOUR SECTION NAME HERE"}
-\label{sec: "WRITE YOUR SECTION LABEL HERE"}
+\chapter{``BURAYA BÖLÜM ADI YAZILACAK''} %TEZİNİZİN BÖLÜM ADI
+"BURAYA YAZABİLİRSİNİZ"
+\section{"BÖLÜM 2 BAŞLIK 1"}
+\label{sec: "BAŞLIK 1"}
 
-"BELOW IS A SAMPLE TABLE GIVEN FOR CAPTION ILLUSTRAION. CAPTION OF TABLES MUST BE ON TOP OF TABLES. DO NOT CHANGE THE PLACEMENT OF CAPTION. YOU CAN MODIFY CAPTION AND IT'S LABEL TO YOUR NEEDS."
+"AŞAĞIDAKİ TABLO, TABLO YAZISININ GÖSTERİMİNİ ÖRNEKLENDİRMEK AMACIYLA KONULMUŞTUR. BÜTÜN TABLO YAZILARI TABLONUN ÜSTÜNDE OLMALIDIR. TABLO YAZISI ETİKETİNİ İSTEDİĞİNİZ ŞEKİLDE DÜZENLEYEBİLİRSİNİZ; ANCAK YERİNİ DEĞİŞTİRMEMEYE DİKKAT EDİN!''
 \begin{table}
 	\begin{center}
-	\caption{SAMPLE TABLE\label{tab: LABEL1}}
+	\caption{Örnek Tablo\label{tab: etiket1}}
 		\begin{tabular}{| c | c |}
 		\hline
 		HEADER 1  & HEADER 2 \\
@@ -304,76 +324,76 @@ Dan{\i}\c{s}man: "WRITE YOUR ADVISOR'S PREFIX AND NAME HERE IN TURKISH"\\[1cm]
 	\end{center}
 \end{table}
 
-"BELOW IS A TIKZ PICTURE SAMPLE ENVIRONMENT. PLEASE LOOK UP TIKZ\&PGF MANUAL FOR FURTHER INFORMATION."
+"AŞAĞIDAKİ ŞEKİL ÖRNEK TİKZ ŞEKİLLERİ ORTAMIDIR. DAHA FAZLA BİLGİ İÇİN TIKZ\&PGF, SMARTDİAGRAM MANUALLERİNİ ARATINIZ. ŞEKİLLERİN YAZISI HER ZAMAN ŞEKİLLERİN ALTINDA OLMALIDIR.''
 
 \begin{figure}[h]
 	\begin{center}
 		\begin{tikzpicture}
-			"WRITE  YOUR TIKZ \& PGF CODE HERE. DO NOT CHANGE CAPTION PLACEMENT."
+			"TIKZ \& PGF KODU BURAYA. ŞEKİL YAZISININ YERİNİ DEĞİŞTİRMEYİN."
 		\end{tikzpicture}
 	\end{center}
-	\caption{"WRITE YOUR CAPTION HERE" \label{fig: "WRITE YOUR LABEL HERE"}}
+	\caption{"Şekil yazısı" \label{fig: "şekil etiketi"}}
 \end{figure}
 
-\subsection{"SUBSECTION NAME HERE"}
-\label{sec: "LABEL HERE"}
-"DO NOT FORGET: GRADUATE SCHOOL OF NATURAL AND APPLIED SCIENCES ALLOW UP TO 4 LEVEL SUBSECTIONING. YOU CAN USE BELOW ACCORDING TO YOUR NEEDS:"
+\subsection{"ALTBAŞLIK 2.1.1"}
+\label{sec: "BURAYA ETİKETK"}
+"UNUTMAYIN! FBE SADECE 4 ALT BAŞLIĞA KADAR KULLANMA İZİNİ VERİYOR YANİ KULLANABİLECEĞİNİZ EN ALT BAŞLIK TÜRLERİ AŞAĞIDAKİ GİBİDİR. İHTİYACINIZA GÖRE KULLANABİLİRSİNİZ.:"
 \begin{verbatim}
-\subsubsection
-\subsubsubsection
+\subsubsection{}
+\subsubsubsection{}
 \end{verbatim}
 
-"BELOW IS A SAMPLE FIGURE ENVIRONMENT. DO NOT CHANGE THE CAPTION LOCATION. FIGURE CAPTIONS MUST BE LOCATED UNDER THE FIGURE. ALSO DO NOT FORGET TO ADD YOUR FIGURE FILE UNDER THE SAME DIRECTORY AS YOUR TEX FILE. FOR SUBFIGURE ENVIRONMENT PLEASE LOOK UP FOR LATEX UNDER WIKIBOOKS."
+"AŞAĞIDA ÖRNEK BİR ŞEKİL ALANI BULUNMAKTADIR. ŞEKİL YAZISININ YERİNİ DEĞİŞTİRMEYİN. ŞEKİL YAZISI ŞEKLİN ALTINDA OLMALIDIR. AYRICA KULLANACAĞINIZ ŞEKİLİN TEX DOSYASIYLA AYNI ADRESTE OLMASINA DİKKAT EDİN. AYRINTILI BİLGİ İÇİN WİKİBOOKS'TA LATEX KİTABINI İNCELEYEBİLİRSİNİZ.''
 
 \begin{figure}[!h]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{"WRITE YOUR FIGURE FILE NAME HERE"}
+\includegraphics[width=0.7\textwidth]{"ŞEKİL ADI.ŞEKİL UZANTISI"}
 \end{center}
-\caption{"CAPTION HERE" \label{fig: "LABEL HERE"}}
+\caption{"ŞEKİL YAZISI" \label{fig: "ŞEKİL ETİKETİ"}}
 \end{figure}
 
 
 %--------------------------------------------------------------------------------------------------------------------------------------------------
 %---------------------------------------------------------------Bibliography------------------------------------------------------------------
-%!!!!!!!!!!!!!!!!!!DO NOT CHANGE!!! ONLY MODIFY MASTERS.BIB FILE!!!!!!!!!!!!!!!!
+%!!!!!!!!!!!!!!!!!!BURAYI DEĞİŞTİRMEYİN!!! SADECE MASTERS.BIB DOSYASINI DÜZENLEYİN. BİBTEX KULLANIMI İÇİN WİKİBOOKS LATEX KİTABINI İNCELEYİN.!!!!!!!!!!!!!!!!
 
 \bibliography{Masters}{}
 \bibliographystyle{yildiz_fbe}
-\addcontentsline{toc}{chapter}{REFERENCES}
+\addcontentsline{toc}{chapter}{KAYNAKLAR}
 %--------------------------------------------------------------------------------------------------------------------------------------------------
-%-------------------------------------Appendices-------------------------------------------------------------------
+%-------------------------------------EKLER-------------------------------------------------------------------
 %--------------------------------------------------------------------------------------------------------------------------------------------------
 
 \begin{appendices}
-\chapter{"APPENDIX NO.1 NAME HERE"}
-\label{appx: "LABEL HERE"}
+\chapter{"EK 1 ADI BURAYA"}
+\label{appx: "ETİKET BURAYA"}
 \onehalfspacing
 
-"YOU CAN COMMENT THIS SECTION IF YOU DO NOT NEED AND APPENDICES CHAPTER. YOU CAN INCREASE THE NUMBER OF APPENDICES CHAPTERS AS BELOW."
+"EĞER TEZİNİZDE EK KULLANMAYACAKSANIZ BU KISMI \% İŞARETİYLE ETKİSİZ HALE GETİRİN (AÇIKLAMA HALİNE GETİRİN). BİRDEN FAZLA EK BÖLÜMÜ İÇİN İSTEDİĞİNİZ SAYIDA ARTTIRABİLİRSİNİZ."
 
-\chapter{"APPENDIX NO.1 NAME HERE"}
-\label{sec: "LABEL HERE"}
+\chapter{"EK 2 ADI BURAYA"}
+\label{sec: "ETİKET BURAYA"}
 
 
 \end{appendices}
 
 %--------------------------------------------------------------------------------------------------------------------------------------------------
-%-----------------------------Cirriculum Vitae---------------------------
+%-----------------------------ÖZGEÇMİŞ---------------------------
 %--------------------------------------------------------------------------------------------------------------------------------------------------
-\chapter*{CURRICULUM VITAE}
-\addcontentsline{toc}{chapter}{CURRICULUM VITAE}
-%When you fill in the parts the page will look in order! First fill in the necessary parts then change the table properties if necessary!
+\chapter*{ÖZGEÇMİŞ}
+\addcontentsline{toc}{chapter}{ÖZGEÇMİŞ}
+
 \begin{table}[!h]
 \begin{tabular}{l l}
-\multicolumn{2}{l}{\bfseries{PERSONAL INFORMATION}}\\[2ex]
-\bfseries{Name Surname} & "WRITE YOUR NAME HERE"\\[2ex]
-\bfseries{Date of Birth and Place} & "WRITE YOUR BIRTHDAY HERE" - "WRITE YOUR BIRTHPLACE HERE"\\[2ex]
-\bfseries{Foreign Languages} & "WRITE YOUR LANGUAGES USING COMMA AS A SEPARATOR"\\[5ex]
+\multicolumn{2}{l}{\bfseries{KİŞİSEL BİLGİLER}}\\[2ex]
+\bfseries{Adı Soyadı} & "BURAYA ADINIZ"\\[2ex]
+\bfseries{Doğum Tarihi ve Yeri} & "DOĞUM GÜNÜ" - "DOĞUM YERİ"\\[2ex]
+\bfseries{Yabancı Dili} & "VİRGÜL İLE AYIRARAK BİLDİĞİNİ YABANCI DİLLERİ YAZINIZ"\\[5ex]
 \end{tabular}
 
 \begin{tabular}{l l l p{2cm}}
-\multicolumn{4}{l}{\bfseries{EDUCATION}}\\[2ex]
-\bfseries{Degree} & \bfseries{Field/Department} & \bfseries{School/University} & \bfseries{Date of Graduation} \\[2ex]
+\multicolumn{4}{l}{\bfseries{ÖĞRENİM DURUMU}}\\[2ex]
+\bfseries{Derece} & \bfseries{Alan} & \bfseries{Okul/üniversite} & \bfseries{Mezuniyet Yılı} \\[2ex]
 PhD. & Dept. of "DEPARTMENT NAME HERE" & "UNIVERSITY HERE" & "DATE OF GRADUATION" \\ [2ex]
 Master's & Dept. of "DEPARTMENT NAME HERE" & "UNIVERSITY HERE" & "DATE OF GRADUATION" \\[2ex]
 Undergraduate & Dept. of "DEPARTMENT NAME HERE" & "UNIVERSITY HERE" & "DATE OF GRADUATION" \\[2ex]
@@ -381,8 +401,8 @@ Highschool & "HIGHSCHOOL HERE" & "DATE OF GRADUATION" \\[5ex]
 \end{tabular}
 
 \begin{tabular}{l p{9.5cm} l}
-\multicolumn{3}{l}{\bfseries{WORK EXPERIENCE}}\\[2ex]
-\bfseries{Year} & \bfseries{Corporation/Institute} & \bfseries{Enrollment} \\[2ex]
+\multicolumn{3}{l}{\bfseries{İŞ TECRÜBESİ}}\\[2ex]
+\bfseries{Yıl} & \bfseries{Firma/Kurum} & \bfseries{Görevi} \\[2ex]
 "START" - \dots & "CORPORATION OR INSTUTE HERE" & "YOUR JOB TITLE HERE" \\[2ex] %THIS ROW IS FOR YOUR ONGOING WORK EXPERIENCE. IF YOU ARE NOT EMPLOYED IN THE PRESENT REPLACE "\dots" WITH AN END DATE
 "START" - "END" & "CORPORATION OR INSTUTE HERE" & "YOUR JOB TITLE HERE" \\[2ex]
 "START" - "END" & "CORPORATION OR INSTUTE HERE" & "YOUR JOB TITLE HERE" \\[2ex]
@@ -393,21 +413,21 @@ Highschool & "HIGHSCHOOL HERE" & "DATE OF GRADUATION" \\[5ex]
 
 \begin{table}[!ht]
 \begin{tabular}{l p{9.5cm} l}
-\multicolumn{3}{l}{\bfseries{WORK EXPERIENCE}}\\[2ex]
+\multicolumn{3}{l}{\bfseries{İŞ TECRÜBESİ}}\\[2ex]
 "START" - "END" & "CORPORATION OR INSTUTE HERE" & "YOUR JOB TITLE HERE" \\[2ex]
 "START" - "END" & "CORPORATION OR INSTUTE HERE" & "YOUR JOB TITLE HERE" \\[2ex]
 "START" - "END" & "CORPORATION OR INSTUTE HERE" & "YOUR JOB TITLE HERE" \\[5ex]
 \end{tabular}
 \begin{tabular}{p{15.5cm}}
 
-\bfseries{PUBLISHMENTS} \\[2ex]
-\bfseries{Conference Papers} \\[2ex]
+\bfseries{YAYINLAR} \\[2ex]
+\bfseries{Bildiri} \\[2ex]
 \textbf{1.} "PUBLISHED WORK 1"\\[2ex]
 \textbf{2.} "PUBLISHED WORK 2"\\[2ex]
-\textbf{3.} "YOU CAN INCREASE NUMBER OF PUBLISHMENTS AS SHOWN. WRITE YOUR PUBLISHMENTS SAME AS BIBLIOGRAPHY SPECIFICATIONS."\\[5ex]
+\textbf{3.} "SAYIYI GÖSTERİLEN ŞEKİLDE ARTTIRABİLİRSİNİZ. GÖSTERİMİ KAYNAKÇA GÖSTERİMİNE UYGUN OLARAK YAPINIZ. AYRICA BU KISIM İÇİN AYRINTILI BİLGİYİ FBE'NİN ŞABLONUNDAN İNCELEYİNİZ."\\[5ex]
 \end{tabular}
 \end{table}
 %--------------------------------------------------------------------------------------------------------------------------------------------------
-%--------------------End of Document----------------------------------------
+%--------------------BELGE SONU----------------------------------------
 %--------------------------------------------------------------------------------------------------------------------------------------------------
 \end{document}

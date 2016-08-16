@@ -1,0 +1,17 @@
+\select@language {turkish}
+\par \vspace \smallskipamount \MakeUppercase {\hfill }\textbf {Sayfa}
+\contentsline {chapter}{S\IeC {\.I}MGE L\IeC {\.I}STES\IeC {\.I}}{v}
+\contentsline {chapter}{KISALTMA L\IeC {\.I}STES\IeC {\.I}}{vi}
+\contentsline {chapter}{\numberline {1}Giri\IeC {\c s}}{2}
+\contentsline {section}{\numberline {1.1}Literat\IeC {\"u}r \IeC {\"O}zeti}{2}
+\contentsline {section}{\numberline {1.2}Tezin Amac\IeC {\i }}{2}
+\contentsline {section}{\numberline {1.3}Orijinal Katk\IeC {\i }}{2}
+\contentsline {chapter}{\numberline {2}``BURAYA B\IeC {\"O}L\IeC {\"U}M ADI YAZILACAK''}{3}
+\contentsline {section}{\numberline {2.1}"B\IeC {\"O}L\IeC {\"U}M 2 BA\IeC {\c S}LIK 1"}{3}
+\contentsline {subsection}{\numberline {2.1.1}"ALTBA\IeC {\c S}LIK 2.1.1"}{3}
+\contentsline {chapter}{KAYNAKLAR}{4}
+\renewcommand {\@chapapp }{Ek}
+\contentsline {chapter}{\numberline {A}"EK 1 ADI BURAYA"}{5}
+\contentsline {chapter}{\numberline {B}"EK 2 ADI BURAYA"}{6}
+\contentsline {chapter}{\IeC {\"O}ZGE\IeC {\c C}M\IeC {\.I}\IeC {\c S}}{7}
+\contentsfinish 

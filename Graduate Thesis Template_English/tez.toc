@@ -1,0 +1,14 @@
+\par \vspace \smallskipamount \MakeUppercase {\hfill }\textbf {Page}
+\contentsline {chapter}{LIST OF SYMBOLS}{v}
+\contentsline {chapter}{LIST OF ABBREVIATIONS}{vi}
+\contentsline {chapter}{\numberline {1}Introduction}{2}
+\contentsline {section}{\numberline {1.1}Literature Review}{2}
+\contentsline {section}{\numberline {1.2}Original Contribution}{2}
+\contentsline {section}{\numberline {1.3}"WRITE YOUR SECTION NAME HERE"}{2}
+\contentsline {subsection}{\numberline {1.3.1}"SUBSECTION NAME HERE"}{3}
+\contentsline {chapter}{REFERENCES}{3}
+\renewcommand {\@chapapp }{Appendix}
+\contentsline {chapter}{\numberline {A}"APPENDIX NO.1 NAME HERE"}{4}
+\contentsline {chapter}{\numberline {B}"APPENDIX NO.1 NAME HERE"}{5}
+\contentsline {chapter}{CURRICULUM VITAE}{6}
+\contentsfinish 
