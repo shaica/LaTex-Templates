@@ -1,11 +1,13 @@
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 # LaTeX-Templates
 This folder includes various ongoing template projects. You can find brief information for each below.
 
 ## Graduate Thesis Template: 
 
-<aside class="warning">
-This template is deprecated. Please see the official website of Graduate School of Natural and Applied Sciences", Yildiz Technical University
-</aside>
+[![Deprecated](https://img.shields.io/badge/-DEPRECATED-critical.svg)](http://www.fbe.yildiz.edu.tr/page/GRADUATION/THESIS-SPELLING-INSTRUCTIONS-and-MANUAL/361)
+
+__This template is deprecated. Please see the official website of Graduate School of Natural and Applied Sciences", Yildiz Technical University__
+
 
 Template for "Graduate School of Natural and Applied Sciences", Yildiz Technical University, Istanbul. This template is prepared based on the specifications of May 2011, and the original word files can be found [here.][8160d950] The language of template is English.
 ### Issues
