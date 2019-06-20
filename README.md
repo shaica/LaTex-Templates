@@ -1,7 +1,12 @@
-# LaTex-Templates
+# LaTeX-Templates
 This folder includes various ongoing template projects. You can find brief information for each below.
 
-## Graduate Thesis Template:
+## Graduate Thesis Template: 
+
+<aside class="warning">
+This template is deprecated. Please see the official website of Graduate School of Natural and Applied Sciences", Yildiz Technical University
+</aside>
+
 Template for "Graduate School of Natural and Applied Sciences", Yildiz Technical University, Istanbul. This template is prepared based on the specifications of May 2011, and the original word files can be found [here.][8160d950] The language of template is English.
 ### Issues
     1. Web references is not displayed as it is defined in guidelines.
